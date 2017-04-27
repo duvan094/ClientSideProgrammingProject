@@ -3,8 +3,9 @@ canvas.width = canvas.offsetWidth;
 canvas.height = canvas.offsetHeight;
 var ctx = canvas.getContext("2d");
 
+canvas.style.background = "#111215";//Change this to change background of canvas
 
-//Change the values of this array to change the colors the ball can get
+//Change the values of this array to change the colors the ball and walls can get.
 var colors = ["#FFFF00", "#FF0000", "#00FFFF", "#0000FF"];
 
 /*
