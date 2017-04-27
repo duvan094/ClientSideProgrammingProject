@@ -19,6 +19,7 @@ function getRandomBallColor(){
 }
 
 
+//TODO maybe add separate wall objects depending if its on the side or on the top or bottom.
 var Wall = function(x,y,width,height,color){//An object describing a wall
   this.x = x;
   this.y = y;
@@ -28,6 +29,9 @@ var Wall = function(x,y,width,height,color){//An object describing a wall
   this.draw = function(){
     ctx.fillStyle = this.color;
     ctx.fillRect(x,y,width,height);
+  };
+  this.move = function(){
+    //TODO some code that should make the walls wider or higher depending if its on the side or on the top.
   };
 };
 
@@ -49,6 +53,9 @@ var Ball = function(x,y,radius,color){//An object describing a ball
     ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);//drawing a circle
     ctx.fill();
   };
+  this.move = function(){//A move function to update the balls position when its in motion
+    //TODO write code.
+  }
 };
 
 
