@@ -3,7 +3,7 @@ canvas.width = canvas.offsetWidth;
 canvas.height = canvas.offsetHeight;
 var ctx = canvas.getContext("2d");
 
-canvas.style.background = "#111215";//Change this to change background of canvas
+canvas.style.background = "#192233";//Change this to change background of canvas
 
 //Change the values of this array to change the colors the ball and walls can get.
 var colors = ["#e22642", "#f7bb22", "#214cf7", "#5cce66"];
@@ -27,8 +27,8 @@ var Wall = function(x,y,width,height,color){//An object describing a wall
   this.draw = function(){
     ctx.fillStyle = this.color;
     ctx.fillRect(x,y,width,height);
-  }
-}
+  };
+};
 
 //TODO a nicer looking way of initiating the walls, preferably with a for-loop
 var wall1 = new Wall(0,0,40,canvas.height,colors[0]);
