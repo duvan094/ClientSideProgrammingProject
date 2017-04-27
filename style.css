@@ -1,0 +1,44 @@
+*{
+  margin:0;
+  padding:0;
+}
+
+html,body{
+  height:100%;
+  padding:0;
+  margin:0;
+}
+
+
+#game-container{
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+#top-menu,#canvas-container,#bottom{
+  position: absolute;
+}
+
+#top-menu{
+  width:100%;
+  height:88px;
+  background: #222325;
+  overflow: hidden;
+}
+
+#top-menu>li{
+  float:left;
+}
+
+#canvas-container{
+  top:88px;
+  width:100%;
+  bottom:0;
+}
+
+#stage{
+  background: #111215;
+  width:100%;
+  height:100%;
+}
