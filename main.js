@@ -28,18 +28,21 @@ var Wall = function(x,y,width,height,color){//An object describing a wall
   this.color = color;
   this.draw = function(){
     ctx.fillStyle = this.color;
-    ctx.fillRect(x,y,width,height);
+    ctx.fillRect(this.x,this.y,this.width,this.height);
   };
   this.move = function(){
     //TODO some code that should make the walls wider or higher depending if its on the side or on the top.
   };
 };
 
+
+var wallThickness = 40;//Change this to change the initial thickness of the walls
+
 var walls = []; //Initiate the walls into an array
-walls.push(new Wall(0,0,40,canvas.height,colors[0]));
-walls.push(new Wall(canvas.width-40,0,40,canvas.height,colors[1]));
-walls.push(new Wall(0,0,canvas.width,40,colors[2]));
-walls.push(new Wall(0,canvas.height-40,canvas.width,40,colors[3]));
+walls.push(new Wall(0,0,wallThickness,canvas.height,colors[0]));
+walls.push(new Wall(canvas.width-wallThickness,0,wallThickness,canvas.height,colors[1]));
+walls.push(new Wall(0,0,canvas.width,wallThickness,colors[2]));
+walls.push(new Wall(0,canvas.height-wallThickness,canvas.width,wallThickness,colors[3]));
 
 
 var Ball = function(x,y,radius,color){//An object describing a ball
@@ -82,13 +85,23 @@ update();
 
 
 /*
-* This function is mainly for desktop if the window should have been resized.
+* This function is for desktop if the window should have been resized.
 * In that case, the canvas is resized to fit everything properly and avoid
 * stretching anything in a weird way.
+* This will not be a problem on mobile devices, since the screen size never
+* changes mid use, but better safe than sorry :)
 */
 window.onresize = function(event) {
   canvas.width = canvas.offsetWidth;
   canvas.height = canvas.offsetHeight;
   ball.x = canvas.width/2;  //Make sure the ball is centered in the middle
   ball.y = canvas.height/2;
+
+  //Updating the width and height for the walls
+  walls[0].height = canvas.height;  //left wall
+  walls[1].x = canvas.width-wallThickness;  //right wall
+  walls[1].height = canvas.height;
+  walls[2].width = canvas.width;  //top wall
+  walls[3].y = canvas.height-wallThickness; //bottom wall
+  walls[3].width = canvas.width;
 };
