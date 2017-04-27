@@ -18,6 +18,7 @@ function getRandomBallColor(){
   return colors[rndNbr];
 }
 
+
 var Wall = function(x,y,width,height,color){//An object describing a wall
   this.x = x;
   this.y = y;
@@ -30,11 +31,11 @@ var Wall = function(x,y,width,height,color){//An object describing a wall
   };
 };
 
-//TODO a nicer looking way of initiating the walls, preferably with a for-loop
-var wall1 = new Wall(0,0,40,canvas.height,colors[0]);
-var wall2 = new Wall(canvas.width-40,0,40,canvas.height,colors[1]);
-var wall3 = new Wall(0,0,canvas.width,40,colors[2]);
-var wall4 = new Wall(0,canvas.height-40,canvas.width,40,colors[3]);
+var walls = []; //Initiate the walls into an array
+walls.push(new Wall(0,0,40,canvas.height,colors[0]));
+walls.push(new Wall(canvas.width-40,0,40,canvas.height,colors[1]));
+walls.push(new Wall(0,0,canvas.width,40,colors[2]));
+walls.push(new Wall(0,canvas.height-40,canvas.width,40,colors[3]));
 
 
 var Ball = function(x,y,radius,color){//An object describing a ball
@@ -59,11 +60,10 @@ var ball = new Ball(canvas.width/2,canvas.height/2,20,getRandomBallColor());
 function update(){
   ctx.clearRect(0,0,canvas.width,canvas.height);//Clear the canvas
 
-  //TODO a nicer way of drawing all the walls.
-  wall1.draw();
-  wall2.draw();
-  wall3.draw();
-  wall4.draw();
+  for(var i = 0; i<walls.length; i++){//calling each of the walls draw function
+    walls[i].draw();
+  }
+
   ball.draw();//draw ball
 
 
