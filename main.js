@@ -55,7 +55,7 @@ var Ball = function(x,y,radius,color){//An object describing a ball
   };
   this.move = function(){//A move function to update the balls position when its in motion
     //TODO write code.
-  }
+  };
 };
 
 
