@@ -6,7 +6,7 @@ var ctx = canvas.getContext("2d");
 canvas.style.background = "#111215";//Change this to change background of canvas
 
 //Change the values of this array to change the colors the ball and walls can get.
-var colors = ["#FFFF00", "#FF0000", "#00FFFF", "#0000FF"];
+var colors = ["#e22642", "#f7bb22", "#214cf7", "#5cce66"];
 
 /*
 *  A help function to chose a random color for the ball.
@@ -31,10 +31,10 @@ var Wall = function(x,y,width,height,color){//An object describing a wall
 }
 
 //TODO a nicer looking way of initiating the walls, preferably with a for-loop
-var wall1 = new Wall(0,0,20,canvas.height,colors[0]);
-var wall2 = new Wall(canvas.width-20,0,20,canvas.height,colors[1]);
-var wall3 = new Wall(0,0,canvas.width,20,colors[2]);
-var wall4 = new Wall(0,canvas.height-20,canvas.width,20,colors[3]);
+var wall1 = new Wall(0,0,40,canvas.height,colors[0]);
+var wall2 = new Wall(canvas.width-40,0,40,canvas.height,colors[1]);
+var wall3 = new Wall(0,0,canvas.width,40,colors[2]);
+var wall4 = new Wall(0,canvas.height-40,canvas.width,40,colors[3]);
 
 
 var Ball = function(x,y,radius,color){//An object describing a ball
@@ -53,7 +53,7 @@ var Ball = function(x,y,radius,color){//An object describing a ball
 
 
 
-var ball = new Ball(canvas.width/2,canvas.height/2,10,getRandomBallColor());
+var ball = new Ball(canvas.width/2,canvas.height/2,20,getRandomBallColor());
 
 /*The update function that renders everything*/
 function update(){
