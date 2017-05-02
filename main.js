@@ -18,31 +18,74 @@ function getRandomBallColor(){
   return colors[rndNbr];
 }
 
+/*
+ * A help function to draw a grid while developing.
+ */
+function drawGrid(){
+  ctx.fillStyle = "#000000";
+  ctx.fillRect(0,canvas.height/2,canvas.width,1);
+  ctx.fillRect(canvas.width/2,0,1,canvas.height);
+}
+
+
 
 //TODO maybe add separate wall objects depending if its on the side or on the top or bottom.
-var Wall = function(x,y,width,height,color){//An object describing a wall
+var Wall = function(x,y,width,height,color,speed){//An object describing a wall
   this.x = x;
   this.y = y;
   this.width = width;
   this.height = height;
   this.color = color;
+  this.speed = speed;
   this.draw = function(){
     ctx.fillStyle = this.color;
     ctx.fillRect(this.x,this.y,this.width,this.height);
   };
   this.move = function(){
     //TODO some code that should make the walls wider or higher depending if its on the side or on the top.
+    if(width>height){
+      if(y>0){
+        this.y-=this.speed;
+      }
+      this.height+=this.speed;
+    }else{
+      if(x>0){
+        this.x-=this.speed;
+      }
+      this.width+=this.speed;
+    }
+  };
+  this.middleReached = function(){
+
   };
 };
 
 
+/*Getter for the speed of top and bottom*/
+function getSpeedTopBottom(){
+  var speedTop = 1;
+  if(canvas.width>canvas.height){
+    speedTop = (canvas.height-80)/canvas.width;
+  }
+  return speedTop;
+}
+
+/*Getter for the speed of the side walls*/
+function getSpeedSide(){
+  var speedSide = 1;
+  if(canvas.height>canvas.width){
+    speedSide = (canvas.width-40)/canvas.height;
+  }
+  return speedSide;
+}
+
 var wallThickness = 40;//Change this to change the initial thickness of the walls
 
 var walls = []; //Initiate the walls into an array
-walls.push(new Wall(0,0,wallThickness,canvas.height,colors[0]));
-walls.push(new Wall(canvas.width-wallThickness,0,wallThickness,canvas.height,colors[1]));
-walls.push(new Wall(0,0,canvas.width,wallThickness,colors[2]));
-walls.push(new Wall(0,canvas.height-wallThickness,canvas.width,wallThickness,colors[3]));
+walls.push(new Wall(0,0,wallThickness,canvas.height,colors[0],getSpeedSide())); //Left wall
+walls.push(new Wall(canvas.width-wallThickness,0,wallThickness,canvas.height,colors[1],getSpeedSide())); //right wall
+walls.push(new Wall(0,0,canvas.width,wallThickness,colors[2],getSpeedTopBottom())); //top wall
+walls.push(new Wall(0,canvas.height-wallThickness,canvas.width,wallThickness,colors[3],getSpeedTopBottom())); //bottom wall
 
 
 var Ball = function(x,y,radius,color){//An object describing a ball
@@ -51,7 +94,6 @@ var Ball = function(x,y,radius,color){//An object describing a ball
   this.radius = radius;
   this.color = color;
   this.draw = function(){//function for drawing ball
-    ctx.beginPath();
     ctx.fillStyle = this.color;
     ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);//drawing a circle
     ctx.fill();
@@ -61,10 +103,8 @@ var Ball = function(x,y,radius,color){//An object describing a ball
   };
 };
 
-
-
-
 var ball = new Ball(canvas.width/2,canvas.height/2,20,getRandomBallColor());
+
 
 /*The update function that renders everything*/
 function update(){
@@ -72,10 +112,12 @@ function update(){
 
   for(var i = 0; i<walls.length; i++){//calling each of the walls draw function
     walls[i].draw();
+    walls[i].move();
   }
 
   ball.draw();//draw ball
 
+  drawGrid();
 
 
   window.requestAnimationFrame(update);
