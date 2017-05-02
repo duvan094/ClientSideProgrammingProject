@@ -79,11 +79,13 @@ var Wall = function(x,y,width,height,color,speed){//An object describing a wall
 };
 
 
+var wallThickness = 40;//Change this to change the initial thickness of the walls
+
 /*Getter for the speed of top and bottom*/
 function getSpeedTopBottom(){
   var speedTop = 1;
   if(canvas.width>canvas.height){
-    speedTop = (canvas.height-80)/canvas.width;
+    speedTop = (canvas.height/2-(ball.radius+wallThickness))/(canvas.width/2-(ball.radius+wallThickness));
   }
   return speedTop;
 }
@@ -92,12 +94,10 @@ function getSpeedTopBottom(){
 function getSpeedSide(){
   var speedSide = 1;
   if(canvas.height>canvas.width){
-    speedSide = (canvas.width-40)/canvas.height;
+    speedSide = (canvas.width/2-(ball.radius+wallThickness))/(canvas.height/2-(ball.radius+wallThickness));
   }
   return speedSide;
 }
-
-var wallThickness = 40;//Change this to change the initial thickness of the walls
 
 var walls = []; //Initiate the walls into an array
 walls.push(new Wall(0,0,wallThickness,canvas.height,colors[0],getSpeedSide())); //Left wall
