@@ -27,6 +27,22 @@ function drawGrid(){
   ctx.fillRect(canvas.width/2,0,1,canvas.height);
 }
 
+var Ball = function(x,y,radius,color){//An object describing a ball
+  this.x = x;
+  this.y = y;
+  this.radius = radius;
+  this.color = color;
+  this.draw = function(){//function for drawing ball
+    ctx.fillStyle = this.color;
+    ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);//drawing a circle
+    ctx.fill();
+  };
+  this.move = function(){//A move function to update the balls position when its in motion
+    //TODO write code.
+  };
+};
+
+var ball = new Ball(canvas.width/2,canvas.height/2,20,getRandomBallColor());
 
 
 //TODO maybe add separate wall objects depending if its on the side or on the top or bottom.
@@ -41,8 +57,7 @@ var Wall = function(x,y,width,height,color,speed){//An object describing a wall
     ctx.fillStyle = this.color;
     ctx.fillRect(this.x,this.y,this.width,this.height);
   };
-  this.move = function(){
-    //TODO some code that should make the walls wider or higher depending if its on the side or on the top.
+  this.move = function(){//A function that moves the walls
     if(width>height){
       if(y>0){
         this.y-=this.speed;
@@ -55,8 +70,11 @@ var Wall = function(x,y,width,height,color,speed){//An object describing a wall
       this.width+=this.speed;
     }
   };
-  this.middleReached = function(){
-
+  this.isCenter = function(){//A function that checks if the wall has reached the center of canvas.
+    if((this.height >= (canvas.height/2)-ball.radius && width>height) || (this.width >= (canvas.width/2)-ball.radius && height>width)){
+      this.speed = 0;
+      return true;
+    }
   };
 };
 
@@ -88,24 +106,6 @@ walls.push(new Wall(0,0,canvas.width,wallThickness,colors[2],getSpeedTopBottom()
 walls.push(new Wall(0,canvas.height-wallThickness,canvas.width,wallThickness,colors[3],getSpeedTopBottom())); //bottom wall
 
 
-var Ball = function(x,y,radius,color){//An object describing a ball
-  this.x = x;
-  this.y = y;
-  this.radius = radius;
-  this.color = color;
-  this.draw = function(){//function for drawing ball
-    ctx.fillStyle = this.color;
-    ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);//drawing a circle
-    ctx.fill();
-  };
-  this.move = function(){//A move function to update the balls position when its in motion
-    //TODO write code.
-  };
-};
-
-var ball = new Ball(canvas.width/2,canvas.height/2,20,getRandomBallColor());
-
-
 /*The update function that renders everything*/
 function update(){
   ctx.clearRect(0,0,canvas.width,canvas.height);//Clear the canvas
@@ -113,11 +113,12 @@ function update(){
   for(var i = 0; i<walls.length; i++){//calling each of the walls draw function
     walls[i].draw();
     walls[i].move();
+    walls[i].isCenter();
   }
 
   ball.draw();//draw ball
 
-  drawGrid();
+  //drawGrid();
 
 
   window.requestAnimationFrame(update);
