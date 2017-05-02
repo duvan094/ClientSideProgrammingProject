@@ -142,9 +142,9 @@ window.onresize = function(event) {
 
   //Updating the width and height for the walls
   walls[0].height = canvas.height;  //left wall
-  walls[1].x = canvas.width-wallThickness;  //right wall
+  walls[1].x = canvas.width-walls[1].width;  //right wall
   walls[1].height = canvas.height;
   walls[2].width = canvas.width;  //top wall
-  walls[3].y = canvas.height-wallThickness; //bottom wall
+  walls[3].y = canvas.height-walls[3].height; //bottom wall
   walls[3].width = canvas.width;
 };
