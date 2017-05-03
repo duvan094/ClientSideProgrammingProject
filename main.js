@@ -53,22 +53,20 @@ var Ball = function(x,y,radius,color,speed){//An object describing a ball
 
   this.collision = function(wall){//A function that checks if a wall is hit
     if(this.x-this.radius >= wall.x && this.x+this.radius <= wall.x+wall.width && this.y-this.radius >= wall.y && this.y+this.radius <= wall.y+wall.height){
-      if(this.color === wall.color){//If player hit the correct wall.
-        this.x = canvas.width/2;
-        this.y = canvas.height/2;
-        this.direction = "";
-        this.color = getRandomBallColor();
-        initWalls();
+      if(this.color === wall.color){  //If player hit the correct wall.
         currentScoreElt.innerHTML = ++currentScore;
+        this.color = getRandomBallColor();  //chose new color for ball
+        initWalls();
       }else{//The the player hits the wrong
-        ball.x = canvas.width/2;
-        ball.y = canvas.height/2;
-        ball.direction = "";
         currentScoreElt.innerHTML = --currentScore;
       }
+      //Put the ball in the center of screen
+      this.direction = "";
+      this.x = canvas.width/2;
+      this.y = canvas.height/2;
     }
   };
-  
+
 };
 
 var ball = new Ball(canvas.width/2,canvas.height/2,20,getRandomBallColor(),15);
@@ -105,13 +103,13 @@ var Wall = function(x,y,width,height,color,speed){//An object describing a wall
   };
 
   this.move = function(){//A function that moves the walls
-    if(width>height){//check if its a side wall
-      if(y>0){
+    if(width>height){//check if its a "top/bottom" or "left/right" wall
+      if(y>0){  //check if wall is at the top or bottom
         this.y-=this.speed;
       }
       this.height+=this.speed;
     }else{
-      if(x>0){
+      if(x>0){  //check if its left or right
         this.x-=this.speed;
       }
       this.width+=this.speed;
@@ -127,15 +125,13 @@ var Wall = function(x,y,width,height,color,speed){//An object describing a wall
   };
 
   this.initWall = function(){
-    if(width > height){
+    if(width > height){ //check if its "top/bottom" or "left/right" wall
       this.height = height;
-      this.x = x;
-      this.y = y;
     }else{
       this.width = width;
-      this.x = x;
-      this.y = y;
     }
+    this.x = x;
+    this.y = y;
     this.speed *= this.incSpeed;
   };
 
@@ -146,20 +142,20 @@ var wallThickness = 40;//Change this to change the initial thickness of the wall
 
 /*Getter for the speed of top and bottom*/
 function getSpeedTopBottom(){
-  var speedTop = 1;
+  var speed = 1;
   if(canvas.width>canvas.height){
-    speedTop = (canvas.height/2-(ball.radius+wallThickness))/(canvas.width/2-(ball.radius+wallThickness));
+    speed = (canvas.height/2-(ball.radius+wallThickness))/(canvas.width/2-(ball.radius+wallThickness));
   }
-  return speedTop;
+  return speed;
 }
 
 /*Getter for the speed of the side walls*/
 function getSpeedSide(){
-  var speedSide = 1;
+  var speed = 1;
   if(canvas.height>canvas.width){
-    speedSide = (canvas.width/2-(ball.radius+wallThickness))/(canvas.height/2-(ball.radius+wallThickness));
+    speed = (canvas.width/2-(ball.radius+wallThickness))/(canvas.height/2-(ball.radius+wallThickness));
   }
-  return speedSide;
+  return speed;
 }
 
 var walls = []; //Initiate the walls into an array
