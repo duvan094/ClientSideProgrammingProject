@@ -3,6 +3,10 @@
   padding:0;
 }
 
+p,li,a,h1{
+  font-family: 'Montserrat', sans-serif;
+}
+
 html,body{
   height:100%;
   padding:0;
@@ -49,6 +53,10 @@ html,body{
  #top-menu>li:nth-child(3){
    left:90%;
  }
+
+ #top-menu>#pause{
+ }
+
 
 #canvas-container{
   top:88px;
