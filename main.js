@@ -3,6 +3,12 @@ canvas.width = canvas.offsetWidth;
 canvas.height = canvas.offsetHeight;
 var ctx = canvas.getContext("2d");
 
+var highScore = 0;
+
+var currentScore = 0;
+var currentScoreElt = document.getElementById("currentScore");
+currentScoreElt.innerHTML = currentScore;
+
 canvas.style.background = "#192233";//Change this to change background of canvas
 
 //Change the values of this array to change the colors the ball and walls can get.
@@ -40,6 +46,9 @@ var Ball = function(x,y,radius,color,speed){//An object describing a ball
         this.x = canvas.width/2;
         this.y = canvas.height/2;
         this.direction = "";
+        this.color = getRandomBallColor();
+        initWalls();
+        currentScoreElt.innerHTML = ++currentScore;
       }else{//The the player hits the wrong
         ball.x = canvas.width/2;
         ball.y = canvas.height/2;
@@ -123,6 +132,17 @@ var Wall = function(x,y,width,height,color,speed){//An object describing a wall
     }
     return false;
   };
+  this.initWall = function(){
+    if(width > height){
+      this.height = height;
+      this.x = x;
+      this.y = y;
+    }else{
+      this.width = width;
+      this.x = x;
+      this.y = y;
+    }
+  };
 };
 
 
@@ -151,6 +171,13 @@ walls.push(new Wall(0,0,wallThickness,canvas.height,colors[0],getSpeedSide())); 
 walls.push(new Wall(canvas.width-wallThickness,0,wallThickness,canvas.height,colors[1],getSpeedSide())); //right wall
 walls.push(new Wall(0,0,canvas.width,wallThickness,colors[2],getSpeedTopBottom())); //top wall
 walls.push(new Wall(0,canvas.height-wallThickness,canvas.width,wallThickness,colors[3],getSpeedTopBottom())); //bottom wall
+
+
+function initWalls(){
+  for(var i = 0; i<=3; i++){
+    walls[i].initWall();
+  }
+}
 
 
 /*The update function that renders everything*/
