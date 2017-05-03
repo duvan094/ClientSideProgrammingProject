@@ -78,7 +78,7 @@ var Ball = function(x,y,radius,color,speed){//An object describing a ball
 
 };
 
-var ball = new Ball(canvas.width/2,canvas.height/2,20,getRandomBallColor(),10);
+var ball = new Ball(canvas.width/2,canvas.height/2,20,getRandomBallColor(),15);
 
 /*A eventlistener for a keydown to control the ball*/
 document.addEventListener('keydown', function(event) {
