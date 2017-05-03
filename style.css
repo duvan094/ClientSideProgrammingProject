@@ -3,6 +3,10 @@
   padding:0;
 }
 
+p,li,a,h1{
+  font-family: 'Montserrat', sans-serif;
+}
+
 html,body{
   height:100%;
   padding:0;
@@ -31,24 +35,17 @@ html,body{
   float: left;
   list-style: none;
   color: #ffffff;
-  margin-top: 5.5%;
   font-size: 30px;
  }
 
  #top-menu>#pause{
-  float: right;
-  margin-right: 10%;
  }
 
  #top-menu>#currentScore{
-  margin-left: 36%;
   font-size: 50px;
-  margin-top: 3%;
  }
 
  #top-menu>#highScore{
-  float: left;
-  margin-left: 10%;
  }
 
 #canvas-container{
