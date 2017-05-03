@@ -52,12 +52,14 @@ html,body{
    right:10%;
  }
 
+
 /*Pausebutton stuff*/
  #pauseButton{
    display:block;
    width:29px;
    height:44px;
    position:relative;
+
  }
 
  #pauseButton>span{
