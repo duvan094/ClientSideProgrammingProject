@@ -28,12 +28,27 @@ html,body{
 }
 
 #top-menu>li{
-  float:left;
+  float: left;
   list-style: none;
   color: #ffffff;
-  padding-left: 50px;
-  margin-top: 35px;
-  font-size: 300%;
+  margin-top: 5.5%;
+  font-size: 30px;
+ }
+
+ #top-menu>#pause{
+  float: right;
+  margin-right: 10%;
+ }
+
+ #top-menu>#currentScore{
+  margin-left: 36%;
+  font-size: 50px;
+  margin-top: 3%;
+ }
+
+ #top-menu>#highScore{
+  float: left;
+  margin-left: 10%;
  }
 
 #canvas-container{
