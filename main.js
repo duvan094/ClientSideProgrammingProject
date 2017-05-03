@@ -143,7 +143,7 @@ var Wall = function(x,y,width,height,color,speed){//An object describing a wall
       this.x = x;
       this.y = y;
     }
-    this.speed *= this.incSpeed; 
+    this.speed *= this.incSpeed;
   };
 };
 
@@ -203,6 +203,21 @@ function update(){
 }
 
 update();
+
+
+var pauseButton = document.getElementById("pauseButton");
+var pauseTriggered = false; //A boolean to keep track if pause has been triggered
+
+/*An eventlistener for if the pausebutton is clicked*/
+pauseButton.addEventListener("click",function(){
+  if(!pauseTriggered){
+    pauseButton.className = "clicked";  //Add a css class to the pauseButton so that it changes shape
+    pauseTriggered = true;
+  }else{
+    pauseButton.className = ""; //Remove the css class
+    pauseTriggered = false;
+  }
+});
 
 
 /*
