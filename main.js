@@ -33,13 +33,17 @@ var Ball = function(x,y,radius,color,speed){//An object describing a ball
   this.radius = radius;
   this.color = color;
   this.speed = speed;
-  this.direction = "none";
+  this.direction = "";
+  this.collision = function(wall){
+    //TODO code
+  };
   this.draw = function(){//function for drawing ball
     ctx.beginPath();
     ctx.fillStyle = this.color;
     ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);//drawing a circle
     ctx.fill();
   };
+
   this.move = function(){//A move function to update the balls position when its in motion
     if(this.direction == "up"){
       this.y -= this.speed;
@@ -51,23 +55,26 @@ var Ball = function(x,y,radius,color,speed){//An object describing a ball
       this.y += this.speed;
     }
   };
+
+
 };
 
 var ball = new Ball(canvas.width/2,canvas.height/2,20,getRandomBallColor(),10);
 
 /*A eventlistener for a keydown to control the ball*/
 document.addEventListener('keydown', function(event) {
-	if (event.keyCode == 87 || event.keyCode == 38) { //w or up-arrow
-		ball.direction = "up";
-	} else if (event.keyCode == 65 || event.keyCode == 37) { //a or right arrow
-		ball.direction = "left";
-	} else if (event.keyCode == 83 || event.keyCode == 40) { //s or down arrow
-		ball.direction = "down";
-	} else if (event.keyCode == 68 || event.keyCode == 39) { //d or left arrow
-		ball.direction = "right";
-	}
+  if (ball.direction == "") {
+  	if (event.keyCode == 87 || event.keyCode == 38) { //w or up-arrow
+  		ball.direction = "up";
+  	} else if (event.keyCode == 65 || event.keyCode == 37) { //a or right arrow
+  		ball.direction = "left";
+  	} else if (event.keyCode == 83 || event.keyCode == 40) { //s or down arrow
+  		ball.direction = "down";
+  	} else if (event.keyCode == 68 || event.keyCode == 39) { //d or left arrow
+  		ball.direction = "right";
+  	}
+  }
 });
-
 
 
 
@@ -144,6 +151,7 @@ function update(){
     walls[i].draw();
     walls[i].move();
     walls[i].isCenter();
+    ball.collision(walls[i]);
   }
 
   ball.draw();//draw ball
