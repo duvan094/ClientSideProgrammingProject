@@ -76,18 +76,20 @@ html,body{
    left:100%;
  }
 
+ #pauseButton.clicked>span{
+   left:45%;
+   height:70.7%;
+ }
+
  #pauseButton.clicked>span:first-child{
    transform:rotate(-45deg);
-   height:70.7%;
-   left:45%;
  }
 
  #pauseButton.clicked>span:last-child{
    transform:rotate(-135deg);
-   left:45%;
-   height:70.7%;
    top:35%;
  }
+
 /*Pausebutton end*/
 
 /*The canvas*/
