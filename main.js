@@ -53,6 +53,7 @@ var Ball = function(x,y,radius,color,speed){//An object describing a ball
         ball.x = canvas.width/2;
         ball.y = canvas.height/2;
         ball.direction = "";
+        currentScoreElt.innerHTML = --currentScore;
       }
     }
   };
