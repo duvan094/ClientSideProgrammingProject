@@ -27,22 +27,49 @@ function drawGrid(){
   ctx.fillRect(canvas.width/2,0,1,canvas.height);
 }
 
-var Ball = function(x,y,radius,color){//An object describing a ball
+var Ball = function(x,y,radius,color,speed){//An object describing a ball
   this.x = x;
   this.y = y;
   this.radius = radius;
   this.color = color;
+  this.speed = speed;
+  this.direction = "none";
   this.draw = function(){//function for drawing ball
+    ctx.beginPath();
     ctx.fillStyle = this.color;
     ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);//drawing a circle
     ctx.fill();
   };
   this.move = function(){//A move function to update the balls position when its in motion
-    //TODO write code.
+    if(this.direction == "up"){
+      this.y -= this.speed;
+    }else if(this.direction == "right"){
+      this.x += this.speed;
+    }else if(this.direction == "left"){
+      this.x -= this.speed;
+    }else if(this.direction == "down"){
+      this.y += this.speed;
+    }
   };
 };
 
-var ball = new Ball(canvas.width/2,canvas.height/2,20,getRandomBallColor());
+var ball = new Ball(canvas.width/2,canvas.height/2,20,getRandomBallColor(),10);
+
+/*A eventlistener for a keydown to control the ball*/
+document.addEventListener('keydown', function(event) {
+	if (event.keyCode == 87 || event.keyCode == 38) { //w or up-arrow
+		ball.direction = "up";
+	} else if (event.keyCode == 65 || event.keyCode == 37) { //a or right arrow
+		ball.direction = "left";
+	} else if (event.keyCode == 83 || event.keyCode == 40) { //s or down arrow
+		ball.direction = "down";
+	} else if (event.keyCode == 68 || event.keyCode == 39) { //d or left arrow
+		ball.direction = "right";
+	}
+});
+
+
+
 
 
 //TODO maybe add separate wall objects depending if its on the side or on the top or bottom.
@@ -57,8 +84,9 @@ var Wall = function(x,y,width,height,color,speed){//An object describing a wall
     ctx.fillStyle = this.color;
     ctx.fillRect(this.x,this.y,this.width,this.height);
   };
+
   this.move = function(){//A function that moves the walls
-    if(width>height){
+    if(width>height){//check if its a side wall
       if(y>0){
         this.y-=this.speed;
       }
@@ -70,11 +98,13 @@ var Wall = function(x,y,width,height,color,speed){//An object describing a wall
       this.width+=this.speed;
     }
   };
+
   this.isCenter = function(){//A function that checks if the wall has reached the center of canvas.
     if((this.height >= (canvas.height/2)-ball.radius && width>height) || (this.width >= (canvas.width/2)-ball.radius && height>width)){
       this.speed = 0;
       return true;
     }
+    return false;
   };
 };
 
@@ -117,6 +147,7 @@ function update(){
   }
 
   ball.draw();//draw ball
+  ball.move();
 
   //drawGrid();
 
