@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400');
+
 *{
   margin:0;
   padding:0;
@@ -26,8 +28,8 @@ html,body{
 #top-menu{
   width:100%;
   height:88px;
-  background: #142028;
   overflow: hidden;
+  background: #142028;
   position: relative;
 }
 
@@ -36,8 +38,10 @@ html,body{
   list-style: none;
   color: #ffffff;
   font-size: 3em;
+  font-weight: 400;
   top:22px;
   text-align: center;
+  line-height: 50px;/*Same lineheight as the top-menu is height*/
  }
 
  #top-menu>li:nth-child(1){
@@ -52,21 +56,32 @@ html,body{
    right:10%;
  }
 
+#highscore{
+  position: relative;
+}
+
+#highscore::before{
+  content: "BEST";
+  display: block;
+  position: absolute;
+  font-size: 14px;
+  font-weight: 300;
+  top:-30px;
+}
 
 /*Pausebutton stuff*/
  #pauseButton{
    display:block;
-   width:29px;
+   width:22px;
    height:44px;
    position:relative;
-
  }
 
  #pauseButton>span{
    position:absolute;
    display:block;
-   background:#FFF;
-   width:30%;
+   background: #547078;
+   width:45%;
    height:100%;
    border-radius:50px;
    transition:left 0.1s ease-in, transform ease 0.1s;
