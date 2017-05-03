@@ -143,7 +143,7 @@ var Wall = function(x,y,width,height,color,speed){//An object describing a wall
       this.x = x;
       this.y = y;
     }
-    this.speed *= incSpeed; 
+    this.speed *= this.incSpeed; 
   };
 };
 
