@@ -34,12 +34,17 @@ var Ball = function(x,y,radius,color,speed){//An object describing a ball
   this.color = color;
   this.speed = speed;
   this.direction = "";
-  this.collision = function(wall){
-    //TODO code
-    if ((this.x-radius) <= wall.x) {
-      if (this.color === wall.color) {
-        //TODO code for getting walls to reset and get a new ball and adding a point to current score
-      } else {/** TODO code for Game Over screen and display high score and play again button **/}
+  this.collision = function(wall){//A function that checks if a wall is hit
+    if(this.x-this.radius >= wall.x && this.x+this.radius <= wall.x+wall.width && this.y-this.radius >= wall.y && this.y+this.radius <= wall.y+wall.height){
+      if(this.color === wall.color){//If player hit the correct wall.
+        this.x = canvas.width/2;
+        this.y = canvas.height/2;
+        this.direction = "";
+      }else{//The the player hits the wrong
+        ball.x = canvas.width/2;
+        ball.y = canvas.height/2;
+        ball.direction = "";
+      }
     }
   };
   this.draw = function(){//function for drawing ball
@@ -68,7 +73,7 @@ var ball = new Ball(canvas.width/2,canvas.height/2,20,getRandomBallColor(),10);
 
 /*A eventlistener for a keydown to control the ball*/
 document.addEventListener('keydown', function(event) {
-  if (ball.direction == "") {
+  if (ball.direction === "") {
   	if (event.keyCode == 87 || event.keyCode == 38) { //w or up-arrow
   		ball.direction = "up";
   	} else if (event.keyCode == 65 || event.keyCode == 37) { //a or right arrow
