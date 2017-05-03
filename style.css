@@ -18,6 +18,7 @@ html,body{
   overflow: hidden;
 }
 
+/*Top menu stuff*/
 #top-menu,#canvas-container,#bottom{
   position: absolute;
 }
@@ -35,8 +36,7 @@ html,body{
   list-style: none;
   color: #ffffff;
   font-size: 3em;
-  top:25%;
-  width:0;
+  top:22px;
   text-align: center;
  }
 
@@ -49,15 +49,48 @@ html,body{
  }
 
  #top-menu>li:nth-child(3){
-   left:90%;
- }
-
- #top-menu>#pause{
-
-  
+   right:10%;
  }
 
 
+/*Pausebutton stuff*/
+ #pauseButton{
+   display:block;
+   width:29px;
+   height:44px;
+   position:relative;
+
+ }
+
+ #pauseButton>span{
+   position:absolute;
+   display:block;
+   background:#FFF;
+   width:30%;
+   height:100%;
+   border-radius:50px;
+   transition:left 0.1s ease-in, transform ease 0.1s;
+ }
+
+ #pauseButton>span:last-child{
+   left:100%;
+ }
+
+ #pauseButton.clicked>span:first-child{
+   transform:rotate(-45deg);
+   height:70.7%;
+   left:45%;
+ }
+
+ #pauseButton.clicked>span:last-child{
+   transform:rotate(-135deg);
+   left:45%;
+   height:70.7%;
+   top:35%;
+ }
+/*Pausebutton end*/
+
+/*The canvas*/
 #canvas-container{
   top:88px;
   width:100%;
