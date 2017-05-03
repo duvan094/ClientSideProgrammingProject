@@ -36,6 +36,11 @@ var Ball = function(x,y,radius,color,speed){//An object describing a ball
   this.direction = "";
   this.collision = function(wall){
     //TODO code
+    if ((this.x-radius) <= wall.x) {
+      if (this.color === wall.color) {
+        //TODO code for getting walls to reset and get a new ball and adding a point to current score
+      } else {/** TODO code for Game Over screen and display high score and play again button **/}
+    }
   };
   this.draw = function(){//function for drawing ball
     ctx.beginPath();
