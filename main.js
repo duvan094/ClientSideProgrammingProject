@@ -106,6 +106,7 @@ var Wall = function(x,y,width,height,color,speed){//An object describing a wall
   this.height = height;
   this.color = color;
   this.speed = speed;
+  this.incSpeed = 1.01;
   this.draw = function(){
     ctx.fillStyle = this.color;
     ctx.fillRect(this.x,this.y,this.width,this.height);
@@ -142,6 +143,7 @@ var Wall = function(x,y,width,height,color,speed){//An object describing a wall
       this.x = x;
       this.y = y;
     }
+    this.speed *= incSpeed; 
   };
 };
 

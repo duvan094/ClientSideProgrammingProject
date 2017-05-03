@@ -31,6 +31,9 @@ html,body{
   float:left;
   list-style: none;
   color: #ffffff;
+  padding-left: 50px;
+  margin-top: 35px;
+  font-size: 250%;
  }
 
 #canvas-container{
