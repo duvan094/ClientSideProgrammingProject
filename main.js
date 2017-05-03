@@ -24,15 +24,6 @@ function getRandomBallColor(){
   return colors[rndNbr];
 }
 
-/*
- * A help function to draw a grid while developing.
- */
-function drawGrid(){
-  ctx.fillStyle = "#000000";
-  ctx.fillRect(0,canvas.height/2,canvas.width,1);
-  ctx.fillRect(canvas.width/2,0,1,canvas.height);
-}
-
 var Ball = function(x,y,radius,color,speed){//An object describing a ball
   this.x = x;
   this.y = y;
@@ -40,22 +31,7 @@ var Ball = function(x,y,radius,color,speed){//An object describing a ball
   this.color = color;
   this.speed = speed;
   this.direction = "";
-  this.collision = function(wall){//A function that checks if a wall is hit
-    if(this.x-this.radius >= wall.x && this.x+this.radius <= wall.x+wall.width && this.y-this.radius >= wall.y && this.y+this.radius <= wall.y+wall.height){
-      if(this.color === wall.color){//If player hit the correct wall.
-        this.x = canvas.width/2;
-        this.y = canvas.height/2;
-        this.direction = "";
-        this.color = getRandomBallColor();
-        initWalls();
-        currentScoreElt.innerHTML = ++currentScore;
-      }else{//The the player hits the wrong
-        ball.x = canvas.width/2;
-        ball.y = canvas.height/2;
-        ball.direction = "";
-      }
-    }
-  };
+
   this.draw = function(){//function for drawing ball
     ctx.beginPath();
     ctx.fillStyle = this.color;
@@ -75,6 +51,22 @@ var Ball = function(x,y,radius,color,speed){//An object describing a ball
     }
   };
 
+  this.collision = function(wall){//A function that checks if a wall is hit
+    if(this.x-this.radius >= wall.x && this.x+this.radius <= wall.x+wall.width && this.y-this.radius >= wall.y && this.y+this.radius <= wall.y+wall.height){
+      if(this.color === wall.color){//If player hit the correct wall.
+        this.x = canvas.width/2;
+        this.y = canvas.height/2;
+        this.direction = "";
+        this.color = getRandomBallColor();
+        initWalls();
+        currentScoreElt.innerHTML = ++currentScore;
+      }else{//The the player hits the wrong
+        ball.x = canvas.width/2;
+        ball.y = canvas.height/2;
+        ball.direction = "";
+      }
+    }
+  };
 
 };
 
@@ -97,8 +89,6 @@ document.addEventListener('keydown', function(event) {
 
 
 
-
-//TODO maybe add separate wall objects depending if its on the side or on the top or bottom.
 var Wall = function(x,y,width,height,color,speed){//An object describing a wall
   this.x = x;
   this.y = y;
@@ -107,6 +97,7 @@ var Wall = function(x,y,width,height,color,speed){//An object describing a wall
   this.color = color;
   this.speed = speed;
   this.incSpeed = 1.01;
+
   this.draw = function(){
     ctx.fillStyle = this.color;
     ctx.fillRect(this.x,this.y,this.width,this.height);
@@ -133,6 +124,7 @@ var Wall = function(x,y,width,height,color,speed){//An object describing a wall
     }
     return false;
   };
+
   this.initWall = function(){
     if(width > height){
       this.height = height;
@@ -145,6 +137,7 @@ var Wall = function(x,y,width,height,color,speed){//An object describing a wall
     }
     this.speed *= this.incSpeed;
   };
+
 };
 
 
@@ -174,7 +167,7 @@ walls.push(new Wall(canvas.width-wallThickness,0,wallThickness,canvas.height,col
 walls.push(new Wall(0,0,canvas.width,wallThickness,colors[2],getSpeedTopBottom())); //top wall
 walls.push(new Wall(0,canvas.height-wallThickness,canvas.width,wallThickness,colors[3],getSpeedTopBottom())); //bottom wall
 
-
+/*A function for giving the walls their initial positions*/
 function initWalls(){
   for(var i = 0; i<=3; i++){
     walls[i].initWall();
@@ -195,9 +188,6 @@ function update(){
 
   ball.draw();//draw ball
   ball.move();
-
-  //drawGrid();
-
 
   window.requestAnimationFrame(update);
 }
