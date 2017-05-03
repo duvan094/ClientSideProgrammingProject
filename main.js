@@ -51,7 +51,7 @@ var Ball = function(x,y,radius,color,speed){//An object describing a ball
     }
   };
 
-  this.collision = function(wall){//A function that checks if a wall is hit
+  this.isCollision = function(wall){//A function that checks if a wall is hit
     if(this.x-this.radius >= wall.x && this.x+this.radius <= wall.x+wall.width && this.y-this.radius >= wall.y && this.y+this.radius <= wall.y+wall.height){
       if(this.color === wall.color){  //If player hit the correct wall.
         currentScoreElt.innerHTML = ++currentScore;
@@ -180,7 +180,7 @@ function update(){
     walls[i].draw();
     walls[i].move();
     walls[i].isCenter();
-    ball.collision(walls[i]);
+    ball.isCollision(walls[i]);
   }
 
   ball.draw();//draw ball
