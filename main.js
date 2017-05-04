@@ -240,12 +240,14 @@ update();
 
 
 var pauseButton = document.getElementById("pauseButton");
+var pauseMenu = document.getElementById("pauseMenu");
 
 /*An eventlistener for if the pausebutton is clicked*/
 pauseButton.addEventListener("click",function(){
   if(!pauseTriggered){
     pauseButton.className = "clicked";  //Add a css class to the pauseButton so that it changes shape
     pauseTriggered = true;
+		pauseMenu.className = "showPauseMenu";
   }else{
     pauseButton.className = ""; //Remove the css class
     pauseTriggered = false;
