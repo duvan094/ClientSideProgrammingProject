@@ -188,7 +188,7 @@ function initWalls(){
   }
 }
 
-/*A functioned used to update the score and highscore*/
+/*A functioned used to update the score and highscore after its game over.*/
 function updateScore(){
     highscoreArr.push(currentScore);	//Add new score
    	highscoreArr.sort(function(a,b){	//sort the highscoreArr
@@ -204,9 +204,10 @@ function updateScore(){
 	window.localStorage.highscores = JSON.stringify(highscoreArr);//Put a new highscore arr in the localstorage
 
 	currentScore = 0;
-	currentScoreElt = currentScore;
+	currentScoreElt.innerHTML = currentScore;
 }
 
+/*The function that is called from update.*/
 function runGame(){
   ctx.clearRect(0,0,canvas.width,canvas.height);//Clear the canvas
 
@@ -219,7 +220,7 @@ function runGame(){
     ball.isCollision(walls[i]);
   }
 
-  ball.draw();//draw ball
+  ball.draw();
   ball.move();
 
 }
@@ -227,12 +228,11 @@ function runGame(){
 
 var pauseTriggered = false; //A boolean to keep track if pause has been triggered
 
-/*The update function that renders everything*/
+/*The update function that is called every frame*/
 function update(){
   if(!pauseTriggered){//Check if game is paused
     runGame();
   }
-
   window.requestAnimationFrame(update);
 }
 
@@ -251,13 +251,12 @@ resumeButton.addEventListener("click",pauseEvent);
 function pauseEvent(){
 	if(!pauseTriggered){
 		pauseButton.className = "clicked";  //Add a css class to the pauseButton so that it changes shape
-		pauseTriggered = true;
 		pauseMenu.className = "showPauseMenu";//show pausemenu
 	}else{
 		pauseButton.className = ""; //Remove the css class
-		pauseTriggered = false;
-		pauseMenu.className = "";	//Remove pausemenu
+    pauseMenu.className = "";	//Remove pausemenu
 	}
+  pauseTriggered = !pauseTriggered;
 }
 
 
