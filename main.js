@@ -9,9 +9,6 @@ var highscoreElt = document.getElementById("highscore");
 
 if (window.localStorage.highscores !== undefined) {
 	highscoreArr = JSON.parse(window.localStorage.highscores);
-	highscoreArr.sort(function(a,b){//sort the highscoreArr
-		return b-a;
-	});
 	highscoreElt.innerHTML = highscoreArr[0];//take the highest highscore from the array
 } else {
 	highscoreElt.innerHTML = 0;
