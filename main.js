@@ -7,14 +7,14 @@ var ctx = canvas.getContext("2d");
 var highscoreArr = [];
 var highscoreElt = document.getElementById("highscore");
 
-if (window.localStorage.highscores != undefined) {
-	highscoreArr = JSON.parse(window.localStorage.highscores);	
+if (window.localStorage.highscores !== undefined) {
+	highscoreArr = JSON.parse(window.localStorage.highscores);
 	highscoreArr.sort(function(a,b){//sort the highscoreArr
 		return b-a;
 	});
 	highscoreElt.innerHTML = highscoreArr[0];//take the highest highscore from the array
 } else {
-	highscoreElt.innerHTML = 0;						
+	highscoreElt.innerHTML = 0;
 }
 
 
@@ -207,9 +207,7 @@ function updateScore(){
 	currentScoreElt = currentScore;
 }
 
-
-/*The update function that renders everything*/
-function update(){
+function runGame(){
   ctx.clearRect(0,0,canvas.width,canvas.height);//Clear the canvas
 
   for(var i = 0; i<walls.length; i++){//calling each of the walls draw function
@@ -224,6 +222,17 @@ function update(){
   ball.draw();//draw ball
   ball.move();
 
+}
+
+
+var pauseTriggered = false; //A boolean to keep track if pause has been triggered
+
+/*The update function that renders everything*/
+function update(){
+  if(!pauseTriggered){//Check if game is paused
+    runGame();
+  }
+
   window.requestAnimationFrame(update);
 }
 
@@ -231,7 +240,6 @@ update();
 
 
 var pauseButton = document.getElementById("pauseButton");
-var pauseTriggered = false; //A boolean to keep track if pause has been triggered
 
 /*An eventlistener for if the pausebutton is clicked*/
 pauseButton.addEventListener("click",function(){
