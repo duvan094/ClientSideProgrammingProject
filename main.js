@@ -3,13 +3,28 @@ canvas.width = canvas.offsetWidth;
 canvas.height = canvas.offsetHeight;
 var ctx = canvas.getContext("2d");
 
-var highScore = 0;
+
+var highscoreArr = [];
+var highscoreElt = document.getElementById("highscore");
+
+if (window.localStorage.highscores != undefined) {
+	highscoreArr = JSON.parse(window.localStorage.highscores);	
+	highscoreArr.sort(function(a,b){//sort the highscoreArr
+		return b-a;
+	});
+	highscoreElt.innerHTML = highscoreArr[0];//take the highest highscore from the array
+} else {
+	highscoreElt.innerHTML = 0;						
+}
+
 
 var currentScore = 0;
 var currentScoreElt = document.getElementById("currentScore");
 currentScoreElt.innerHTML = currentScore;
 
 canvas.style.background = "#192233";//Change this to change background of canvas
+
+
 
 //Change the values of this array to change the colors the ball and walls can get.
 var colors = ["#e22642", "#f7bb22", "#214cf7", "#5cce66"];
@@ -173,6 +188,25 @@ function initWalls(){
   }
 }
 
+/*A functioned used to update the score and highscore*/
+function updateScore(){
+    highscoreArr.push(currentScore);	//Add new score
+   	highscoreArr.sort(function(a,b){	//sort the highscoreArr
+		return b-a;
+	});
+
+	if(highscoreArr.length > 10) {//Remove the last element if there are more than 10 highscores saved.
+		highscoreArr.pop();
+	}
+
+	highscoreElt.innerHTML = highscoreArr[0];//Display the new highest highscore
+
+	window.localStorage.highscores = JSON.stringify(highscoreArr);//Put a new highscore arr in the localstorage
+
+	currentScore = 0;
+	currentScoreElt = currentScore;
+}
+
 
 /*The update function that renders everything*/
 function update(){
@@ -181,7 +215,9 @@ function update(){
   for(var i = 0; i<walls.length; i++){//calling each of the walls draw function
     walls[i].draw();
     walls[i].move();
-    walls[i].isCenter();
+    if(walls[i].isCenter()) {//Only updates score after the walls reached the middle and its a game over
+    	updateScore();
+    }
     ball.isCollision(walls[i]);
   }
 
