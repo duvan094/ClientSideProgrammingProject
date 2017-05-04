@@ -68,6 +68,9 @@ html,body{
   position: absolute;
   font-size: 14px;
   font-weight: 300;
+  width: 36px;
+  left: 50%;
+  margin-left: -18px;
   top:-30px;
 }
 
