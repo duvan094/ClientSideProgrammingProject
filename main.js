@@ -91,12 +91,16 @@ document.addEventListener("keydown", function(event) {
   if (ball.direction === "") {
   	if (event.keyCode == 87 || event.keyCode == 38) { //w or up-arrow
   		ball.direction = "up";
+      ball.speed = 15;
   	} else if (event.keyCode == 65 || event.keyCode == 37) { //a or right arrow
   		ball.direction = "left";
+      ball.speed = (canvas.width)/(canvas.height) * 15;
   	} else if (event.keyCode == 83 || event.keyCode == 40) { //s or down arrow
   		ball.direction = "down";
+      ball.speed = 15;
   	} else if (event.keyCode == 68 || event.keyCode == 39) { //d or left arrow
   		ball.direction = "right";
+      ball.speed = (canvas.width)/(canvas.height) * 15;
   	}
   }
 });
