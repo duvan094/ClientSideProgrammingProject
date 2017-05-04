@@ -239,20 +239,27 @@ function update(){
 update();
 
 
+/*Stuff to show the pause menu*/
 var pauseButton = document.getElementById("pauseButton");
 var pauseMenu = document.getElementById("pauseMenu");
+var resumeButton = document.getElementById("resumeButton");
 
 /*An eventlistener for if the pausebutton is clicked*/
-pauseButton.addEventListener("click",function(){
-  if(!pauseTriggered){
-    pauseButton.className = "clicked";  //Add a css class to the pauseButton so that it changes shape
-    pauseTriggered = true;
-		pauseMenu.className = "showPauseMenu";
-  }else{
-    pauseButton.className = ""; //Remove the css class
-    pauseTriggered = false;
-  }
-});
+pauseButton.addEventListener("click",pauseEvent);
+resumeButton.addEventListener("click",pauseEvent);
+
+function pauseEvent(){
+	if(!pauseTriggered){
+		pauseButton.className = "clicked";  //Add a css class to the pauseButton so that it changes shape
+		pauseTriggered = true;
+		pauseMenu.className = "showPauseMenu";//show pausemenu
+	}else{
+		pauseButton.className = ""; //Remove the css class
+		pauseTriggered = false;
+		pauseMenu.className = "";	//Remove pausemenu
+	}
+}
+
 
 
 /*
