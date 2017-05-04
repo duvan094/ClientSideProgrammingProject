@@ -7,6 +7,7 @@ var ctx = canvas.getContext("2d");
 var highscoreArr = [];
 var highscoreElt = document.getElementById("highscore");
 
+/*Get the get highscores from localStorage if there are any saved*/
 if (window.localStorage.highscores !== undefined) {
 	highscoreArr = JSON.parse(window.localStorage.highscores);
 	highscoreElt.innerHTML = highscoreArr[0];//take the highest highscore from the array
@@ -86,7 +87,7 @@ var Ball = function(x,y,radius,color,speed){//An object describing a ball
 var ball = new Ball(canvas.width/2,canvas.height/2,20,getRandomBallColor(),15);
 
 /*A eventlistener for a keydown to control the ball*/
-document.addEventListener('keydown', function(event) {
+document.addEventListener("keydown", function(event) {
   if (ball.direction === "") {
   	if (event.keyCode == 87 || event.keyCode == 38) { //w or up-arrow
   		ball.direction = "up";
@@ -189,8 +190,8 @@ function initWalls(){
 function updateScore(){
     highscoreArr.push(currentScore);	//Add new score
    	highscoreArr.sort(function(a,b){	//sort the highscoreArr
-		return b-a;
-	});
+		    return b-a;
+	  });
 
 	if(highscoreArr.length > 10) {//Remove the last element if there are more than 10 highscores saved.
 		highscoreArr.pop();
