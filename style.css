@@ -49,6 +49,8 @@ html,body{
  }
 
  #top-menu>li:nth-child(2){
+   width:100px;
+   margin-left: -50px;
    left:50%;
  }
 
