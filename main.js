@@ -58,7 +58,9 @@ var Ball = function(x,y,radius,color,speed){//An object describing a ball
         this.color = getRandomBallColor();  //chose new color for ball
         initWalls();
       }else{//The the player hits the wrong
-        currentScoreElt.innerHTML = --currentScore;
+        if(currentScore!==0){
+          currentScoreElt.innerHTML = --currentScore;
+        }
       }
       //Put the ball in the center of screen
       this.direction = "";
@@ -95,7 +97,7 @@ var Wall = function(x,y,width,height,color,speed){//An object describing a wall
   this.height = height;
   this.color = color;
   this.speed = speed;
-  this.incSpeed = 1.01;
+  this.incSpeed = 1.02;
 
   this.draw = function(){
     ctx.fillStyle = this.color;
