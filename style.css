@@ -142,7 +142,7 @@ html,body{
 }
 
 
-#pauseMenu>ul,#gameOverMenu>ul{
+#pauseMenu>ul,#gameOverMenu>ul,#frontpagemenu>ul{
   position: absolute;
   left:50%;
   top:50%;
@@ -161,7 +161,7 @@ html,body{
   font-weight: 400;
 }
 
-#pauseMenu>ul>.button,#gameOverMenu>ul>.button{
+#pauseMenu>ul>.button,#gameOverMenu>ul>.button,#frontpagemenu>ul>.button{
   display: block;
   background:#FF8802;
   border-radius: 50px;
@@ -175,30 +175,30 @@ html,body{
   font-weight: 400;
 }
 
-#pauseMenu>ul>li:nth-child(2),#gameOverMenu>ul>li:nth-child(2){
+#pauseMenu>ul>li:nth-child(2),#gameOverMenu>ul>li:nth-child(2),#frontpagemenu>ul>li:nth-child(1){
   background: #E22642;
 }
-#pauseMenu>ul>.button:nth-child(3),#gameOverMenu>ul>li:nth-child(3){
+#pauseMenu>ul>.button:nth-child(3),#gameOverMenu>ul>li:nth-child(3),#frontpagemenu>ul>li:nth-child(2){
   background: #f7bb22;
 }
-#pauseMenu>ul>.button:nth-child(4){
+#pauseMenu>ul>.button:nth-child(4), #frontpagemenu>ul>.button:nth-child(3){
   background: #214cf7;
 }
 
-#pauseMenu>ul>.button:active{
+#pauseMenu>ul>.button:active, #frontpagemenu>ul>.button:active{
   color:#DDD;
   transition: background ease-in 0.1s, color ease-in 0.1s;
 }
 /*Click effects*/
-#pauseMenu>ul>.button:active:nth-child(2),#gameOverMenu>ul>.button:active:nth-child(2){
+#pauseMenu>ul>.button:active:nth-child(2),#gameOverMenu>ul>.button:active:nth-child(2),#frontpagemenu>ul>.button:active:nth-child(1){
   background: #C21622;
 }
 
-#pauseMenu>ul>.button:active:nth-child(3),#gameOverMenu>ul>.button:active:nth-child(3){
+#pauseMenu>ul>.button:active:nth-child(3),#gameOverMenu>ul>.button:active:nth-child(3),#frontpagemenu>ul>.button:active:nth-child(2){
   background: #d79b12;
 }
 
-#pauseMenu>ul>.button:active:nth-child(4){
+#pauseMenu>ul>.button:active:nth-child(4), #frontpagemenu>ul>.button:active:nth-child(3){
   background: #112cd7;
 }
 /*Pausemenu end*/
@@ -230,4 +230,16 @@ html,body{
 	left: 50%;
 	margin-left: -35%;
 	margin-top: 20%;
+}
+
+#frontpagemenu>ul {
+  margin-top: -100px;
+}
+
+#menucontainer>svg {
+  width: 16%;
+  position: absolute;
+  left: 50%;
+  margin-left: -8%;
+  bottom:25%;
 }
