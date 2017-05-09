@@ -15,6 +15,30 @@ if (window.localStorage.highscores !== undefined) {
 	highscoreElt.innerHTML = 0;
 }
 
+function loadDoc(){
+  
+  var myRequest = new  XMLHttpRequest();
+
+    
+
+}
+
+
+
+myRequest.document = "";
+
+var method = "GET";
+var url = "frontpage.html";
+myRequest.open(method, url);
+
+myRequest.send();
+
+myRequest.addEventListener("load",dealWithResponse);
+
+function dealWithResponse(){
+    document.body.innerHTML = myRequest.document;
+}
+
 var currentScore = 0;
 var currentScoreElt = document.getElementById("currentScore");
 currentScoreElt.innerHTML = currentScore;
