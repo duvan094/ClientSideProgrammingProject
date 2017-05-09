@@ -150,6 +150,9 @@ var Wall = function(x,y,width,height,color,speed){//An object describing a wall
     this.speed *= this.incSpeed;
   };
 
+	this.resetSpeed = function(){
+		this.speed = speed;
+	};
 };
 
 
@@ -220,7 +223,7 @@ function runGame(){
   }
 
 	if(collision){//Shows the game over menu if the walls have reached the middle
-		showGameOver(true,currentScore);
+		showGameOver(true);
 		updateScore();
 		pauseTriggered = true;
 	}
@@ -267,9 +270,9 @@ function pauseEvent(){
 
 var gameOverMenu = document.getElementById("gameOverMenu");
 
-function showGameOver(gameOver,score){
+function showGameOver(gameOver){
 	if(gameOver){
-		document.getElementById("score").innerHTML = score;
+		document.getElementById("score").innerHTML = currentScore;
 		gameOverMenu.className = "showMenu";//show pausemenu
 		pauseTriggered = true;
 	}else{
@@ -277,6 +280,17 @@ function showGameOver(gameOver,score){
 	}
 }
 
+var restartButton = document.getElementById("restartButton");
+restartButton.addEventListener("click",newGame);
+
+function newGame(){//A function for initiating a new game
+	initWalls();
+	for(var i = 0; i<walls.length; i++){
+		walls[i].resetSpeed();
+	}
+	showGameOver(false);
+	pauseTriggered = false;
+}
 
 /*
 * This function is for desktop if the window should have been resized.
