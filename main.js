@@ -15,7 +15,6 @@ if (window.localStorage.highscores !== undefined) {
 	highscoreElt.innerHTML = 0;
 }
 
-
 var currentScore = 0;
 var currentScoreElt = document.getElementById("currentScore");
 currentScoreElt.innerHTML = currentScore;
