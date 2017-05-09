@@ -126,7 +126,7 @@ html,body{
 
 
 /*Pause menu*/
-#pauseMenu{
+#pauseMenu,#gameOverMenu{
   position: absolute;
   width:100%;
   height:100%;
@@ -136,13 +136,13 @@ html,body{
   background: rgba(0,0,0,0.6);
 }
 
-#pauseMenu.showPauseMenu{
+#pauseMenu.showMenu,#gameOverMenu.showMenu{
     display: block;
     z-index: 100;
 }
 
 
-#pauseMenu>ul{
+#pauseMenu>ul,#gameOverMenu>ul{
   position: absolute;
   left:50%;
   top:50%;
@@ -154,14 +154,14 @@ html,body{
   margin-top: -150px;
 }
 
-#pauseMenu>ul>li>h2{
+#pauseMenu>ul>li>h2,#gameOverMenu>ul>li>h2{
   color:#FFF;
   text-align: center;
   margin-bottom: 22px;
   font-weight: 400;
 }
 
-#pauseMenu>ul>.button{
+#pauseMenu>ul>.button,#gameOverMenu>ul>.button{
   display: block;
   background:#FF8802;
   border-radius: 50px;
@@ -175,10 +175,10 @@ html,body{
   font-weight: 400;
 }
 
-#pauseMenu>ul>li:nth-child(2){
+#pauseMenu>ul>li:nth-child(2),#gameOverMenu>ul>li:nth-child(2){
   background: #E22642;
 }
-#pauseMenu>ul>.button:nth-child(3){
+#pauseMenu>ul>.button:nth-child(3),#gameOverMenu>ul>li:nth-child(3){
   background: #f7bb22;
 }
 #pauseMenu>ul>.button:nth-child(4){
@@ -190,11 +190,11 @@ html,body{
   transition: background ease-in 0.1s, color ease-in 0.1s;
 }
 /*Click effects*/
-#pauseMenu>ul>.button:active:nth-child(2){
+#pauseMenu>ul>.button:active:nth-child(2),#gameOverMenu>ul>.button:active:nth-child(2){
   background: #C21622;
 }
 
-#pauseMenu>ul>.button:active:nth-child(3){
+#pauseMenu>ul>.button:active:nth-child(3),#gameOverMenu>ul>.button:active:nth-child(3){
   background: #d79b12;
 }
 
@@ -203,7 +203,18 @@ html,body{
 }
 /*Pausemenu end*/
 
+/*GameOver menu*/
+#gameOverMenu>ul>li:nth-child(1){
+  color:#FFF;
+  text-align: center;
+  font-size: 18px;
+}
 
+#gameOverMenu>ul>li:nth-child(1)>span{
+  font-size: 88px;
+}
+
+/*GameOver menu*/
 
 /*Frontpage MENU*/
 #menucontainer {
@@ -220,8 +231,3 @@ html,body{
 	margin-left: -35%;
 	margin-top: 20%;
 }
-
-
-
-
-

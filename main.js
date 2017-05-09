@@ -209,14 +209,21 @@ function updateScore(){
 function runGame(){
   ctx.clearRect(0,0,canvas.width,canvas.height);//Clear the canvas
 
+	var collision = false;
   for(var i = 0; i<walls.length; i++){//calling each of the walls draw function
     walls[i].draw();
     walls[i].move();
     if(walls[i].isCenter()) {//Only updates score after the walls reached the middle and its a game over
-    	updateScore();
-    }
+			collision = true;
+		}
     ball.isCollision(walls[i]);
   }
+
+	if(collision){//Shows the game over menu if the walls have reached the middle
+		showGameOver(true,currentScore);
+		updateScore();
+		pauseTriggered = true;
+	}
 
   ball.draw();
   ball.move();
@@ -249,7 +256,7 @@ resumeButton.addEventListener("click",pauseEvent);
 function pauseEvent(){
 	if(!pauseTriggered){
 		pauseButton.className = "clicked";  //Add a css class to the pauseButton so that it changes shape
-		pauseMenu.className = "showPauseMenu";//show pausemenu
+		pauseMenu.className = "showMenu";//show pausemenu
 	}else{
 		pauseButton.className = ""; //Remove the css class
     pauseMenu.className = "";	//Remove pausemenu
@@ -257,6 +264,18 @@ function pauseEvent(){
   pauseTriggered = !pauseTriggered;
 }
 
+
+var gameOverMenu = document.getElementById("gameOverMenu");
+
+function showGameOver(gameOver,score){
+	if(gameOver){
+		document.getElementById("score").innerHTML = score;
+		gameOverMenu.className = "showMenu";//show pausemenu
+		pauseTriggered = true;
+	}else{
+		gameOverMenu.className = "";
+	}
+}
 
 
 /*
