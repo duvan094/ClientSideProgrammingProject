@@ -2,7 +2,7 @@ var canvas = document.getElementById("stage");
 canvas.width = canvas.offsetWidth;
 canvas.height = canvas.offsetHeight;
 var ctx = canvas.getContext("2d");
-
+var pauseTriggered = false; //A boolean to keep track if pause has been triggered
 
 var highscoreArr = [];
 var highscoreElt = document.getElementById("highscore");
@@ -87,7 +87,7 @@ var ball = new Ball(canvas.width/2,canvas.height/2,20,getRandomBallColor(),15);
 
 /*A eventlistener for a keydown to control the ball*/
 document.addEventListener("keydown", function(event) {
-  if (ball.direction === "") {
+  if (ball.direction === "" && !pauseTriggered) {//only take input if no other key is pressed and the game is not paused
   	if (event.keyCode == 87 || event.keyCode == 38) { //w or up-arrow
   		ball.direction = "up";
   	} else if (event.keyCode == 65 || event.keyCode == 37) { //a or right arrow
@@ -233,7 +233,6 @@ function runGame(){
 }
 
 
-var pauseTriggered = false; //A boolean to keep track if pause has been triggered
 
 /*The update function that is called every frame*/
 function update(){
