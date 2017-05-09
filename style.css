@@ -86,7 +86,7 @@ html,body{
    position:absolute;
    display:block;
    background: #547078;
-   width:45%;
+   width:35%;
    height:100%;
    border-radius:50px;
    transition:left 0.1s ease-in, transform ease 0.1s;
@@ -107,7 +107,7 @@ html,body{
 
  #pauseButton.clicked>span:last-child{
    transform:rotate(-135deg);
-   top:35%;
+   top:40%;
  }
 
 /*Pausebutton end*/
@@ -185,7 +185,7 @@ html,body{
   background: #214cf7;
 }
 
-#pauseMenu>ul>.button:active, #frontpagemenu>ul>.button:active{
+#pauseMenu>ul>.button:active, #frontpagemenu>ul>.button:active, #gameOverMenu>ul>.button:active{
   color:#DDD;
   transition: background ease-in 0.1s, color ease-in 0.1s;
 }
