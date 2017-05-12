@@ -114,7 +114,7 @@ document.addEventListener("touchmove", function(event){
 
 /*When the touchevents are done this event calculates which direction the swipe was in.*/
 document.addEventListener("touchend", function(event){
-	if (ball.direction === "" && !pauseTriggered) {//only save swipe event as long as game is not paused or ball already moving
+	if (ball.direction === "" && !pauseTriggered && touchEnd !== undefined) {//only save swipe event as long as game is not paused, ball already moving, or no swipeEvent
 
 		var xDiff = touchEnd.touches[0].clientX - touchStart.touches[0].clientX;
 		var yDiff = touchEnd.touches[0].clientY - touchStart.touches[0].clientY;
@@ -132,6 +132,7 @@ document.addEventListener("touchend", function(event){
 				ball.direction = "up";
 			}
 		}
+		touchEnd = undefined;
 	}
 });
 
