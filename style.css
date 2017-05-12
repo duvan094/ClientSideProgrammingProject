@@ -4,6 +4,10 @@
   margin:0;
   padding:0;
   font-family: 'Montserrat', sans-serif;
+  /*Remove the possibility to mark any text*/
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
 }
 
 
@@ -173,10 +177,6 @@ html,body{
   font-size:22px;
   color:#FFF;
   font-weight: 400;
-  /*Stuff so that its not possible to mark the text*/
-  -webkit-user-select: none; /* Chrome/Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+ */
 }
 
 #pauseMenu>ul>li:nth-child(2),#gameOverMenu>ul>li:nth-child(2),#frontpagemenu>ul>li:nth-child(1){
