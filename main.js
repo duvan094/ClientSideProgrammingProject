@@ -286,7 +286,7 @@ function newGame(){//A function for initiating a new game
 	for(var i = 0; i<walls.length; i++){
 		walls[i].resetSpeed();
 	}
-	showGameOver(false);
+	showGameOver(false);//Remove Game over screen
 	pauseTriggered = false;
 }
 
