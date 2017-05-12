@@ -100,6 +100,43 @@ document.addEventListener("keydown", function(event) {
   }
 });
 
+/*Variables to keep track on the touch events*/
+var touchStart;
+var touchEnd;
+
+document.addEventListener("touchstart", function(event){
+	touchStart = event;
+});
+
+document.addEventListener("touchmove", function(event){
+	touchEnd = event;
+});
+
+/*When the touchevents are done this event calculates which direction the swipe was in.*/
+document.addEventListener("touchend", function(event){
+	if (ball.direction === "" && !pauseTriggered) {//only save swipe event as long as game is not paused or ball already moving
+
+		var xDiff = touchEnd.touches[0].clientX - touchStart.touches[0].clientX;
+		var yDiff = touchEnd.touches[0].clientY - touchStart.touches[0].clientY;
+
+		if(Math.abs(xDiff) > Math.abs(yDiff)){	//Horizontal swipe if the x-diff is larger than y-Diff
+			if(xDiff > 0){	//chek if right or left
+					ball.direction = "right";
+			}else{
+				ball.direction = "left";
+			}
+		}else{	//Vertical Swipe
+			if(yDiff > 0){
+				ball.direction = "down";
+			}else{
+				ball.direction = "up";
+			}
+		}
+	}
+});
+
+
+
 
 
 var Wall = function(x,y,width,height,color,speed){//An object describing a wall
