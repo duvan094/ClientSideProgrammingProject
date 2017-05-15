@@ -137,9 +137,6 @@ document.addEventListener("touchend", function(event){
 });
 
 
-
-
-
 var Wall = function(x,y,width,height,color,speed){//An object describing a wall
   this.x = x;
   this.y = y;
@@ -348,4 +345,5 @@ window.onresize = function(event) {
   walls[2].width = canvas.width;  //top wall
   walls[3].y = canvas.height-walls[3].height; //bottom wall
   walls[3].width = canvas.width;
+
 };
