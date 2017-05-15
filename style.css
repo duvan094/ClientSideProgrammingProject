@@ -17,6 +17,9 @@ html,body{
   margin:0;
 }
 
+body{
+  overflow-y: hidden;/*Hopefully disable the scroll-down refresh on chrome*/
+}
 
 #game-container{
   position: relative;
