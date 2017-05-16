@@ -3,14 +3,20 @@
   <head>
     <meta charset="utf-8">
     <title>Wallz</title>
-    <meta name="application-name" content="Wallz"><!-- iOS app Title -->
-    <meta name="apple-mobile-web-app-title" content="Wallz"><!-- Android app Title -->
+
+    <meta name="mobile-web-app-capable" content="yes"><!-- for Chrome on Android -->
+    <meta name="application-name" content="Wallz"><!-- Android app Title -->
+    <meta name="apple-mobile-web-app-capable" content="yes"><!-- for Safari on iOS -->
+    <meta name="apple-mobile-web-app-title" content="Wallz"><!-- iOS app Title -->
 
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--Open in Fullscreen when page is saved to Home screen-->
-    <meta name="mobile-web-app-capable" content="yes"><!-- for Chrome on Android -->
-    <meta name="apple-mobile-web-app-capable" content="yes"><!-- for Safari on iOS -->
+
+    <!-- Color the status bar on mobile devices -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="Black-translucent">
+    <meta name="theme-color" content="rgba(0, 0, 0, 1)">
+
 
     <link rel="shortcut icon" href="img/logos/favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" sizes="57x57" href="img/logos/apple-touch-icon-57x57.png">
