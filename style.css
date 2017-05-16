@@ -17,6 +17,11 @@ html,body{
   margin:0;
 }
 
+#main-container{
+    height:100%;
+    width:100%;
+}
+
 body{
   overflow-y: hidden;/*Hopefully disable the scroll-down refresh on chrome*/
 }
