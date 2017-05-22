@@ -21,3 +21,7 @@ document.getElementById("gameButton").addEventListener("click",function(){
 document.getElementById("highscoreButton").addEventListener("click",function(){
 	getScreen("highscore");
 });
+
+document.getElementById("infoButton").addEventListener("click",function(){
+	getScreen("info");
+});

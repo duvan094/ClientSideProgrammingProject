@@ -301,18 +301,32 @@ body{
 
 #highscorecontainer>ul>li {
   color:#FFF;
-  font-size: 42px;
+  font-size: 38px;
   font-weight: 400;
-  line-height: 44px;
+  line-height: 40px;
 }
 
-#highscorecontainer>button{
+#highscorecontainer>button, #infoContainer>button{
   width:200px;
   position: absolute;
   bottom:0;
   left:50%;
-  margin-bottom: 44px;
+  margin-bottom: 66px;
   margin-left: -100px;
   border:none;
+  background: #214cf7;
+  outline: none;
+  transition: background ease-in 0.1s, color ease-in 0.1s;
+}
+
+#highscorecontainer>button:active, #infoContainer>button:active{
   background: #112cd7;
+}
+
+/*Info page*/
+#tutorialGif{
+  margin-top: 44px;
+  width:100%;
+  height:auto;
+  position: relative;
 }
