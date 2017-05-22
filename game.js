@@ -333,6 +333,10 @@ document.getElementById("menuButton2").addEventListener("click",function(){
 	getScreen("menu");
 });
 
+document.getElementById("highscoreButton").addEventListener("click",function(){
+  getScreen("highscore");
+});
+
 /*
 * This function is for desktop if the window should have been resized.
 * In that case, the canvas is resized to fit everything properly and avoid

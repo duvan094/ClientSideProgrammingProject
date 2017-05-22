@@ -24,6 +24,7 @@ html,body{
 
 body{
   overflow-y: hidden;/*Hopefully disable the scroll-down refresh on chrome*/
+  background-color: #142028;
 }
 
 #game-container{
@@ -232,7 +233,6 @@ body{
 
 /*Frontpage MENU*/
 #menucontainer {
-	background-color: #142028;
 	width: 100%;
 	height: 100%;
 	position: relative;
@@ -280,4 +280,26 @@ body{
 #menucontainer>#sound>svg {
   width: 100%;
   position: absolute;
+}
+
+
+/*Highscore page*/
+
+#highscorecontainer>h1 {
+  color: #e22642;
+  font-size: 45px;
+  position: fixed;
+  left: 50%;
+  width: 300px;
+  margin-left: -150px;
+}
+
+#highscorecontainer>ol {
+  color: #214cf7;
+  font-size: 30px;
+  height: 400px;
+  position: absolute;
+  top: 50%;
+  margin-top: -200px;
+  left: 50%;
 }

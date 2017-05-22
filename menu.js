@@ -17,3 +17,7 @@ function soundEvent() {
 document.getElementById("gameButton").addEventListener("click",function(){
 	getScreen("game");
 });
+
+document.getElementById("highscoreButton").addEventListener("click",function(){
+	getScreen("highscore");
+});
