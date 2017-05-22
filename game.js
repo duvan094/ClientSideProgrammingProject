@@ -225,7 +225,19 @@ function initWalls(){
 
 /*A functioned used to update the score and highscore after its game over.*/
 function updateScore(){
-    highscoreArr.push(currentScore);	//Add new score
+
+		var scoreInArr = false;
+		for(var i = 0; i<highscoreArr.length;i++){ //Check so that the a certain score isn't added twice
+				if(currentScore == highscoreArr[i]){
+					scoreInArr = true;
+					break;
+				}
+		}
+
+		if(!scoreInArr && currentScore !== 0){	//Only add score if it isn't already in the highscore Array or if its zero.
+    	highscoreArr.push(currentScore);	//Add new score
+		}
+
    	highscoreArr.sort(function(a,b){	//sort the highscoreArr
 		    return b-a;
 	  });
@@ -234,7 +246,9 @@ function updateScore(){
 		highscoreArr.pop();
 	}
 
-	highscoreElt.innerHTML = highscoreArr[0];//Display the new highest highscore
+	if(highscoreArr[0] !== undefined){	//Check so that there even is any first element in the array.
+		highscoreElt.innerHTML = highscoreArr[0];//Display the new highest highscore
+	}
 
 	window.localStorage.highscores = JSON.stringify(highscoreArr);//Put a new highscore arr in the localstorage
 
