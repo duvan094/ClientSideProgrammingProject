@@ -325,6 +325,14 @@ function newGame(){//A function for initiating a new game
 	pauseTriggered = false;
 }
 
+document.getElementById("menuButton1").addEventListener("click",function(){
+	getScreen("menu");
+});
+
+document.getElementById("menuButton2").addEventListener("click",function(){
+	getScreen("menu");
+});
+
 /*
 * This function is for desktop if the window should have been resized.
 * In that case, the canvas is resized to fit everything properly and avoid
