@@ -1,21 +1,28 @@
 var myRequest = new XMLHttpRequest(); // This object contains methods for fetching data from other files
 myRequest.responseType = "text"; // choose between document, text, json, blob and arraybuffer
 
-/*A function for requesting the game*/
-function getGame(){
-  myRequest.open("GET", "game.html"); // the file you wish to fetch
+
+/*
+* A function that is called to request a new screen. Call getScreen with a string containing the screen name.
+* For example: getScreen("menu");, getScreen("game");. To make this function to work you have to give the
+* .html and .js file the same name.
+*/
+function getScreen(screen){
+  var container = document.getElementById("main-container");
+
+  myRequest.open("GET", screen + ".html"); // the file you wish to fetch
   myRequest.send(); // send the request for the file
 
   // this is an event listener. It will run your function when the page has loaded.
   myRequest.addEventListener("load", function(e){
-  	document.getElementById("main-container").innerHTML = myRequest.responseText; // if you choose text as responseType you'll find the contents of the file as a string using the property response or responseText
+  	container.innerHTML = myRequest.responseText; // if you choose text as responseType you'll find the contents of the file as a string using the property response or responseText
   });
 
   /*Add the game script file*/
-  var gameScript = document.createElement('script');
-  gameScript.src = "game.js";
+  var script = document.createElement('script');
+  script.src = screen + ".js";
 
-  document.body.appendChild(gameScript);
+  container.appendChild(script);
 }
 
-getGame();
+getScreen("menu");

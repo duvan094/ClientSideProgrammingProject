@@ -13,3 +13,7 @@ function soundEvent() {
 	}
   soundOn = !soundOn;
 }
+
+document.getElementById("gameButton").addEventListener("click",function(){
+	getScreen("game");
+});
