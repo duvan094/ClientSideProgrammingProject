@@ -1,3 +1,6 @@
+/*Menu Sound button*/
+var soundChange = document.getElementById("sound");
+
 /*A function for giving the sound button the right look*/
 function toggleSoundCss(){
 	if(!soundOn){//if sound is off
@@ -9,9 +12,6 @@ function toggleSoundCss(){
 
 toggleSoundCss();//Set the sound symbol to display sound on or sound off, depending on what the global variable is set to.
 
-/*Menu Sound button*/
-var soundChange = document.getElementById("sound");
-
 /*
  * If the sound button is clicked we set the global variable for sound,
  * found in main.js, to its opposite and change the css.
@@ -19,6 +19,7 @@ var soundChange = document.getElementById("sound");
 soundChange.addEventListener("click",function() {
 	soundOn = !soundOn;
 	toggleSoundCss();
+	window.localStorage.soundOn = JSON.stringify(soundOn);//Save the soundOn variable to the localstorage.
 });
 
 

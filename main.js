@@ -1,4 +1,10 @@
-var soundOn = true;//A global variable to keep track on if the sound is on
+var soundOn; //A global variable to keep track on if the sound is on
+
+if (window.localStorage.soundOn !== undefined) { //Check if there are any sound settings saved previously
+	soundOn = JSON.parse(window.localStorage.soundOn);
+} else {
+	soundOn = true;
+}
 
 
 var myRequest = new XMLHttpRequest(); // This object contains methods for fetching data from other files
