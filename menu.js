@@ -1,6 +1,6 @@
 /*Frontpage Menu Sound Check*/
 var soundChange = document.getElementById("sound");
-var soundOn = false;
+var soundOn = true;
 
 soundChange.addEventListener("click",soundEvent);
 

@@ -21,7 +21,9 @@ currentScoreElt.innerHTML = currentScore;
 
 canvas.style.background = "#192233";//Change this to change background of canvas
 
-
+var ballswoosh = document.getElementById("ballswoosh");
+var wallhit = document.getElementById("wallhit");
+var errorhit = document.getElementById("errorhit");
 
 //Change the values of this array to change the colors the ball and walls can get.
 var colors = ["#e22642", "#f7bb22", "#214cf7", "#5cce66"];
@@ -69,10 +71,12 @@ var Ball = function(x,y,radius,color,speed){//An object describing a ball
         currentScoreElt.innerHTML = ++currentScore;
         this.color = getRandomBallColor();  //chose new color for ball
         initWalls();
+        wallhit.play(); //Play sound
       }else{//The the player hits the wrong
         if(currentScore!==0){
           currentScoreElt.innerHTML = --currentScore;
         }
+        errorhit.play(); //Play sound
       }
       //Put the ball in the center of screen
       this.direction = "";
@@ -97,6 +101,7 @@ document.addEventListener("keydown", function(event) {
   	} else if (event.keyCode == 68 || event.keyCode == 39) { //d or left arrow
   		ball.direction = "right";
   	}
+    ballswoosh.play(); //Play sound
   }
 });
 
@@ -132,6 +137,7 @@ document.addEventListener("touchend", function(event){
 				ball.direction = "up";
 			}
 		}
+    ballswoosh.play(); //Play sound
 		touchEnd = undefined;
 	}
 });
