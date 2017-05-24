@@ -1,3 +1,6 @@
+var soundOn = true;//A global variable to keep track on if the sound is on
+
+
 var myRequest = new XMLHttpRequest(); // This object contains methods for fetching data from other files
 myRequest.responseType = "text"; // choose between document, text, json, blob and arraybuffer
 
