@@ -105,16 +105,24 @@ document.addEventListener("keydown", function(event) {
   if (ball.direction === "" && !pauseTriggered) {//only take input if no other key is pressed and the game is not paused
   	if (event.keyCode == 87 || event.keyCode == 38) { //w or up-arrow
   		ball.direction = "up";
+			if(soundOn){
+				ballswoosh.play(); //Play sound
+			}
   	} else if (event.keyCode == 65 || event.keyCode == 37) { //a or right arrow
   		ball.direction = "left";
+			if(soundOn){
+	    	ballswoosh.play(); //Play sound
+			}
   	} else if (event.keyCode == 83 || event.keyCode == 40) { //s or down arrow
   		ball.direction = "down";
+			if(soundOn){
+				ballswoosh.play(); //Play sound
+			}
   	} else if (event.keyCode == 68 || event.keyCode == 39) { //d or left arrow
   		ball.direction = "right";
-  	}
-
-		if(soundOn){
-    	ballswoosh.play(); //Play sound
+			if(soundOn){
+	    	ballswoosh.play(); //Play sound
+			}
 		}
 	}
 });
