@@ -285,13 +285,14 @@ function runGame(){
 
 /*The update function that is called every frame*/
 function update(){
+	var id = window.requestAnimationFrame(update);
   if(!pauseTriggered){//Check if game is paused
     runGame();
-  }
-  window.requestAnimationFrame(update);
-}
+	}else{
+		window.cancelAnimationFrame(id);//Remove the animation frame if the game is paused.
+	}
 
-update();
+}
 
 
 /*Stuff to show the pause menu*/
@@ -304,14 +305,16 @@ pauseButton.addEventListener("click",pauseEvent);
 resumeButton.addEventListener("click",pauseEvent);
 
 function pauseEvent(){
-	if(!pauseTriggered){
+	pauseTriggered = !pauseTriggered;
+	if(pauseTriggered){
 		pauseButton.className = "clicked";  //Add a css class to the pauseButton so that it changes shape
 		pauseMenu.className = "showMenu";//show pausemenu
 	}else{
 		pauseButton.className = ""; //Remove the css class
     pauseMenu.className = "";	//Remove pausemenu
+		update();
 	}
-  pauseTriggered = !pauseTriggered;
+
 }
 
 
@@ -337,17 +340,23 @@ function newGame(){//A function for initiating a new game
 	}
 	showGameOver(false);//Remove Game over screen
 	pauseTriggered = false;
+	update();
 }
 
+newGame();//Create the new a game
+
 document.getElementById("menuButton1").addEventListener("click",function(){
+	pauseTriggered = !pauseTriggered;
 	getScreen("menu");
 });
 
 document.getElementById("menuButton2").addEventListener("click",function(){
+	pauseTriggered = !pauseTriggered;
 	getScreen("menu");
 });
 
 document.getElementById("highscoreButton").addEventListener("click",function(){
+	pauseTriggered = !pauseTriggered;
   getScreen("highscore");
 });
 
@@ -371,5 +380,4 @@ window.onresize = function(event) {
   walls[2].width = canvas.width;  //top wall
   walls[3].y = canvas.height-walls[3].height; //bottom wall
   walls[3].width = canvas.width;
-
 };

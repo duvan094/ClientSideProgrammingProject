@@ -4,6 +4,7 @@ var highscoreList = document.getElementById("highscoreList");
 /*Get the get highscores from localStorage if there are any saved*/
 if (window.localStorage.highscores !== undefined) {
 	highscoreArr = JSON.parse(window.localStorage.highscores);
+	highscoreList.innerHTML = "";
 
 	for(var i = 0; i<highscoreArr.length; i++){
 		var highscoreElt = document.createElement("li");
