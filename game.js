@@ -29,6 +29,20 @@ var errorhit = new Audio();
 errorhit.src = "sounds/errorhit.wav";
 
 
+var soundOn; //A variable to keep track on if the sound is on
+
+if (window.localStorage.soundOn !== undefined) { //Check if there are any sound settings saved previously
+	soundOn = JSON.parse(window.localStorage.soundOn);
+} else {
+	soundOn = true;
+}
+
+if(!soundOn){
+	ballswoosh.muted = true;
+	wallhit.muted = true;
+	errorhit.muted = true;
+}
+
 //Change the values of this array to change the colors the ball and walls can get.
 var colors = ["#e22642", "#f7bb22", "#214cf7", "#5cce66"];
 
@@ -75,19 +89,12 @@ var Ball = function(x,y,radius,color,speed){//An object describing a ball
         currentScoreElt.innerHTML = ++currentScore;
         this.color = getRandomBallColor();  //chose new color for ball
         initWalls();
-
-				if(soundOn){
-        	wallhit.play(); //Play sound
-				}
-
-	    }else{//The the player hits the wrong
+        wallhit.play(); //Play sound
+		  }else{//The the player hits the wrong
         if(currentScore!==0){
           currentScoreElt.innerHTML = --currentScore;
         }
-
-				if(soundOn){
-        	errorhit.play(); //Play sound
-				}
+        errorhit.play(); //Play sound
 			}
       //Put the ball in the center of screen
       this.direction = "";
@@ -105,24 +112,16 @@ document.addEventListener("keydown", function(event) {
   if (ball.direction === "" && !pauseTriggered) {//only take input if no other key is pressed and the game is not paused
   	if (event.keyCode == 87 || event.keyCode == 38) { //w or up-arrow
   		ball.direction = "up";
-			if(soundOn){
-				ballswoosh.play(); //Play sound
-			}
+			ballswoosh.play(); //Play sound
   	} else if (event.keyCode == 65 || event.keyCode == 37) { //a or right arrow
   		ball.direction = "left";
-			if(soundOn){
-	    	ballswoosh.play(); //Play sound
-			}
+	    ballswoosh.play(); //Play sound
   	} else if (event.keyCode == 83 || event.keyCode == 40) { //s or down arrow
   		ball.direction = "down";
-			if(soundOn){
-				ballswoosh.play(); //Play sound
-			}
+			ballswoosh.play(); //Play sound
   	} else if (event.keyCode == 68 || event.keyCode == 39) { //d or left arrow
   		ball.direction = "right";
-			if(soundOn){
-	    	ballswoosh.play(); //Play sound
-			}
+	    ballswoosh.play(); //Play sound
 		}
 	}
 });
@@ -160,9 +159,7 @@ document.addEventListener("touchend", function(event){
 			}
 		}
 
-		if(soundOn){
-    	ballswoosh.play(); //Play sound
-		}
+    ballswoosh.play(); //Play sound
 
 		touchEnd = undefined;
 	}

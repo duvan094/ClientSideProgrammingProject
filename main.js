@@ -1,11 +1,3 @@
-var soundOn; //A global variable to keep track on if the sound is on
-
-if (window.localStorage.soundOn !== undefined) { //Check if there are any sound settings saved previously
-	soundOn = JSON.parse(window.localStorage.soundOn);
-} else {
-	soundOn = true;
-}
-
 /*
 * A function that is called to request a new screen. Call getScreen with a string containing the screen name.
 * For example: getScreen("menu");, getScreen("game");. To make this function to work you have to give the

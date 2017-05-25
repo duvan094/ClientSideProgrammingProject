@@ -1,3 +1,11 @@
+
+if (window.localStorage.soundOn !== undefined) { //Check if there are any sound settings saved previously
+	soundOn = JSON.parse(window.localStorage.soundOn);
+} else {
+	soundOn = true;
+}
+
+
 /*Menu Sound button*/
 var soundChange = document.getElementById("sound");
 
