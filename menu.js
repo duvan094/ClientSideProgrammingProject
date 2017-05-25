@@ -1,3 +1,4 @@
+var soundOn; //A variable to keep track on if the sound is on
 
 if (window.localStorage.soundOn !== undefined) { //Check if there are any sound settings saved previously
 	soundOn = JSON.parse(window.localStorage.soundOn);
