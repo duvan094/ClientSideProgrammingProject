@@ -255,6 +255,7 @@ body{
 
 
 /*
+ * Sound button. Borrowed the CSS for the sound button from this Pen: https://codepen.io/peiche/pen/obBROB.
  */
 #sound {
   width: 60px;
