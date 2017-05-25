@@ -13,7 +13,7 @@ var soundChange = document.getElementById("sound");
 /*A function for giving the sound button the right look*/
 function toggleSoundCss(){
 	if(!soundOn){//if sound is off
-		soundChange.className = "clicked";
+		soundChange.className = "mute";
 	}else{
 		soundChange.className = ""; //Remove the css class
 	}

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400');
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
 
 *{
   margin:0;
@@ -251,37 +252,70 @@ body{
   margin-top: -100px;
 }
 
-#menucontainer>#sound {
-  width: 50px;
-  height: 50px;
+
+
+/*
+ */
+#sound {
+  width: 60px;
+  height: 60px;
   position: absolute;
-  left: 50%;
-  margin-left: -8%;
-  bottom:25%;
+  left:50%;
+  margin-left: -30px;
+  top:50%;
+  margin-top: 100px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.icon {
+  color: #FFF;
+  width: 75%;
+  height: 100%;
+  line-height: 100%;
+  font-size: 60px;
   display: block;
+  margin: auto;
 }
 
-#sound>svg:last-child{
-  display: none;
-}
-
-#sound>svg:first-child{
-  display: block;
-}
-
-#sound.clicked>svg:last-child{
-  display: block;
-}
-
-#sound.clicked>svg:first-child{
-  display: none;
-}
-
-#menucontainer>#sound>svg {
-  width: 100%;
+.wave {
   position: absolute;
+  border: 3px solid transparent;
+  border-right: 3px solid #FFF;
+  border-radius: 50%;
+  transition: all 200ms;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
+.wave_one {
+  width: 50%;
+  height: 50%;
+}
+
+.wave_two {
+  width: 75%;
+  height: 75%;
+}
+
+.mute .wave {
+  border-radius: 0;
+  width: 50%;
+  height: 50%;
+  border-width: 0 3px 0 0;
+}
+
+.mute .wave_one {
+  transform: rotate(45deg) translate3d(0, -50%, 0);
+}
+
+.mute .wave_two {
+  transform: rotate(-45deg) translate3d(0, 50%, 0);
+}
+/*Sound button end*/
 
 /*Highscore page*/
 #highscorecontainer{
