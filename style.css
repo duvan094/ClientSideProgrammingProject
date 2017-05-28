@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400');
-@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
 
 *{
   margin:0;
@@ -265,7 +264,6 @@ body{
   margin-left: -30px;
   top:50%;
   margin-top: 100px;
-  cursor: pointer;
   display: inline-block;
 }
 
@@ -273,10 +271,13 @@ body{
   color: #FFF;
   width: 75%;
   height: 100%;
-  line-height: 100%;
-  font-size: 60px;
   display: block;
   margin: auto;
+}
+
+#sound>.fa{
+  line-height: 100%;
+  font-size: 60px;
 }
 
 .wave {
