@@ -50,7 +50,7 @@ var colors = ["#e22642", "#f7bb22", "#214cf7", "#5cce66"];
 *  First it creates a number between 0-3 and then it returns
 *  the color with that index from the array colors.
 */
-function getRandomBallColor(){
+function getRandomColor(){
   var rndNbr = Math.floor(Math.random()*4);
   return colors[rndNbr];
 }
@@ -86,7 +86,7 @@ var Ball = function(x,y,radius,color,speed){//An object describing a ball
     if(this.x-this.radius >= wall.x && this.x+this.radius <= wall.x+wall.width && this.y-this.radius >= wall.y && this.y+this.radius <= wall.y+wall.height){
       if(this.color === wall.color){  //If player hit the correct wall.
         currentScoreElt.innerHTML = ++currentScore;
-        this.color = getRandomBallColor();  //chose new color for ball
+        this.color = getRandomColor();  //chose new color for ball
         initWalls();
         wallhit.play(); //Play sound
 		  }else{//The the player hits the wrong
@@ -104,7 +104,7 @@ var Ball = function(x,y,radius,color,speed){//An object describing a ball
 
 };
 
-var ball = new Ball(canvas.width/2,canvas.height/2,20,getRandomBallColor(),15);
+var ball = new Ball(canvas.width/2,canvas.height/2,20,getRandomColor(),15);
 
 /*A eventlistener for a keydown to control the ball*/
 document.addEventListener("keydown", function(event) {
@@ -319,7 +319,6 @@ function update(){
 	}else{
 		window.cancelAnimationFrame(id);//Remove the animation frame if the game is paused.
 	}
-
 }
 
 
