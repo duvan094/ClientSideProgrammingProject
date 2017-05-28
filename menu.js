@@ -8,14 +8,14 @@ if (window.localStorage.soundOn !== undefined) { //Check if there are any sound 
 
 
 /*Menu Sound button*/
-var soundChange = document.getElementById("sound");
+var soundButton = document.getElementById("sound");
 
 /*A function for giving the sound button the right look*/
 function toggleSoundCss(){
 	if(!soundOn){//if sound is off
-		soundChange.className = "mute";
+		soundButton.className = "mute";
 	}else{
-		soundChange.className = ""; //Remove the css class
+		soundButton.className = ""; //Remove the css class
 	}
 }
 
@@ -25,7 +25,7 @@ toggleSoundCss();//Set the sound symbol to display sound on or sound off, depend
  * If the sound button is clicked we set the global variable for sound,
  * found in main.js, to its opposite and change the css.
  */
-soundChange.addEventListener("click",function() {
+soundButton.addEventListener("click",function() {
 	soundOn = !soundOn;
 	toggleSoundCss();
 	window.localStorage.soundOn = JSON.stringify(soundOn);//Save the soundOn variable to the localstorage.

@@ -254,7 +254,7 @@ function initWalls(){
 /*A functioned used to update the score and highscore after its game over.*/
 function updateScore(){
 
-		var scoreInArr = false;
+		var scoreInArr = false; //A variable to keep track if the score is already in the array 
 		for(var i = 0; i<highscoreArr.length;i++){ //Check so that the a certain score isn't added twice
 				if(currentScore == highscoreArr[i]){
 					scoreInArr = true;
@@ -301,7 +301,6 @@ function runGame(){
 	if(collision){//Shows the game over menu if the walls have reached the middle
 		showGameOver(true);
 		updateScore();
-		pauseTriggered = true;
 	}
 
   ball.draw();
@@ -341,7 +340,6 @@ function pauseEvent(){
     pauseMenu.className = "";	//Remove pausemenu
 		update();
 	}
-
 }
 
 
@@ -373,17 +371,14 @@ function newGame(){//A function for initiating a new game
 newGame();//Create the new a game
 
 document.getElementById("menuButton1").addEventListener("click",function(){
-	pauseTriggered = !pauseTriggered;
 	getScreen("menu");
 });
 
 document.getElementById("menuButton2").addEventListener("click",function(){
-	pauseTriggered = !pauseTriggered;
 	getScreen("menu");
 });
 
 document.getElementById("highscoreButton").addEventListener("click",function(){
-	pauseTriggered = !pauseTriggered;
   getScreen("highscore");
 });
 
