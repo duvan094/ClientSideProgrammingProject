@@ -27,10 +27,6 @@ var wallhit = new Audio();
 wallhit.src = "sounds/wallhit.wav";
 var errorhit = new Audio();
 errorhit.src = "sounds/errorhit.wav";
-var itswallz = new Audio();
-itswallz.src = "sounds/itswaaaaaaallz.mp3";
-
-itswallz.play(); //Sorry Jacob :P
 
 var soundOn; //A variable to keep track on if the sound is on
 
@@ -44,7 +40,6 @@ if(!soundOn){
 	ballswoosh.muted = true;
 	wallhit.muted = true;
 	errorhit.muted = true;
-  itswallz.muted = true;
 }
 
 //Change the values of this array to change the colors the ball and walls can get.
@@ -177,7 +172,7 @@ var Wall = function(x,y,width,height,color,speed){//An object describing a wall
   this.height = height;
   this.color = color;
   this.speed = speed;
-  this.incSpeed = 1 / (1 + (Math.exp(-1.15)));
+  this.incSpeed = 1.015;
 
   this.draw = function(){
     ctx.fillStyle = this.color;
