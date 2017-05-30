@@ -12,10 +12,7 @@ if (window.localStorage.highscores !== undefined) {
 		highscoreList.appendChild(highscoreElt);
 	}
 
-} else {
-	//If no highscores...
 }
-
 
 
 document.getElementById("menuButton").addEventListener("click",function(){
