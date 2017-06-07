@@ -27,6 +27,7 @@ toggleSoundCss();//Set the sound symbol to display sound on or sound off, depend
  */
 soundButton.addEventListener("click",function() {
 	soundOn = !soundOn;
+
 	toggleSoundCss();
 	window.localStorage.soundOn = JSON.stringify(soundOn);//Save the soundOn variable to the localstorage.
 });

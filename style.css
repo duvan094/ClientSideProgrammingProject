@@ -247,6 +247,16 @@ body{
   margin-top: -200px;
 }
 
+#madeBy {
+  position: absolute;
+  bottom:5%;
+  color:#446068;
+  text-align: center;
+  font-weight: 300;
+  font-size: 14px;
+  width: 100%;
+}
+
 #frontpagemenu>ul {
   margin-top: -100px;
 }

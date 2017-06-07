@@ -134,6 +134,7 @@ document.addEventListener("touchstart", function(event){
 });
 
 document.addEventListener("touchmove", function(event){
+	event.preventDefault();	/*Will give a warning in chrome, but is necessary to prevent Iphones moving the screen*/
 	touchEnd = event;
 });
 
@@ -254,7 +255,7 @@ function initWalls(){
 /*A functioned used to update the score and highscore after its game over.*/
 function updateScore(){
 
-		var scoreInArr = false; //A variable to keep track if the score is already in the array 
+		var scoreInArr = false; //A variable to keep track if the score is already in the array
 		for(var i = 0; i<highscoreArr.length;i++){ //Check so that the a certain score isn't added twice
 				if(currentScore == highscoreArr[i]){
 					scoreInArr = true;
