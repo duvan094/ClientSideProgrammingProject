@@ -20,6 +20,8 @@ html,body{
 #main-container{
     height:100%;
     width:100%;
+    max-width: 520px;
+    margin: auto;
 }
 
 body{
